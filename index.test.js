@@ -42,6 +42,15 @@ it("processes recursive include directives", async () => {
   expect(outputTree.children.length).toEqual(2);
 });
 
+it("throws error if no matching file is found", async () => {
+  expect.assertions(1);
+  const inputString = "@include nonexistant.md";
+  const inputTree = mdast.parse(inputString);
+  return mdastInclude(inputTree).catch(e => {
+    expect(e).toBeDefined();
+  });
+});
+
 it("throws error if there is a non-include statement inside an include block", () => {
   expect.assertions(1);
   const inputString = "@include 2p.md\n@include 2p.md\nfoo";

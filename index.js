@@ -23,6 +23,9 @@ const mdastInclude = async (tree, options = {}, context = {}) => {
         }
         const includePattern = `${baseDirectory}/${includeRegex.exec(line)[1]}`;
         const includePaths = await fastGlob(includePattern);
+        if (includePaths.length === 0) {
+          throw new Error(`no files matched pattern ${includePattern}`);
+        }
         const contentPromises = includePaths.map(async path => {
           const includeBase = path.slice(0, path.lastIndexOf("/"));
           const includeString = await fs.promises.readFile(path, {
