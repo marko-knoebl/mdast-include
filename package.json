@@ -1,7 +1,7 @@
 {
-  "name": "@karuga/mdast-include",
+  "name": "@karuga/remark-include",
   "version": "0.2.0",
-  "description": "include other markdown content into an mdast tree",
+  "description": "include other markdown content into an mdast / remark document",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -9,7 +9,8 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "^25.2.7",
-    "prettier": "^2.0.2"
+    "prettier": "^2.0.2",
+    "remark": "^12.0.0"
   },
   "dependencies": {
     "@karuga/mdast": "^0.1.0",

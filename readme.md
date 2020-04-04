@@ -1,6 +1,6 @@
-# mdast-include
+# remark-include
 
-supports @include directives for mdast
+@include directives for remark / mdast
 
 features:
 
@@ -39,3 +39,30 @@ wildcard imports:
 ```
 
 note: code formatters (like prettier) may have to be disabled (e.g. to prevent replacing `*` with `\*`):
+
+using the remark plugin:
+
+```js
+const { remarkInclude } = require("@karuga/remark-include");
+
+const processor = remark().use(remarkInclude);
+
+const input = "@include foo.md";
+const output = (await processor.process(input)).toString();
+// output will be the contents of foo.md
+```
+
+using the mdast transformer:
+
+```js
+const { mdastInclude } = require("@karuga/remark-include");
+
+const input = {
+  type: "root",
+  children: [
+    { type: "paragraph" /*...*/ }
+    /*...*/
+  ]
+};
+const output = await mdastInclude(input);
+```
