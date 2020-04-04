@@ -1,10 +1,13 @@
 {
   "name": "@karuga/remark-include",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "include other markdown content into an mdast / remark document",
   "main": "index.js",
   "scripts": {
     "test": "jest"
+  },
+  "bin": {
+    "remark-include": "./md-include-bin.js"
   },
   "license": "ISC",
   "devDependencies": {
@@ -14,6 +17,7 @@
   },
   "dependencies": {
     "@karuga/mdast": "^0.1.0",
-    "fast-glob": "^3.2.2"
+    "fast-glob": "^3.2.2",
+    "fs-extra": "^9.0.0"
   }
 }

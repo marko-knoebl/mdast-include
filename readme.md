@@ -66,3 +66,17 @@ const input = {
 };
 const output = await mdastInclude(input);
 ```
+
+using mdInclude:
+
+```js
+const { mdInclude } = require("@karuga/remark-include");
+
+mdInclude("input.md", "output.md");
+```
+
+using the npx script:
+
+```bash
+npx @karuga/remark-include input.md output.md
+```
