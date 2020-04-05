@@ -13,7 +13,8 @@
   "devDependencies": {
     "jest": "^25.2.7",
     "prettier": "^2.0.2",
-    "remark": "^12.0.0"
+    "remark": "^12.0.0",
+    "vfile": "^4.1.0"
   },
   "dependencies": {
     "@karuga/mdast": "^0.1.0",
