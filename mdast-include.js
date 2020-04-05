@@ -56,4 +56,4 @@ const mdastInclude = async (tree, options = {}, context = {}) => {
   return newContent;
 };
 
-module.exports = mdastInclude;
+module.exports = { mdastInclude };

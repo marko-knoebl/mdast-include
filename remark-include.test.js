@@ -1,6 +1,6 @@
 const remark = require("remark");
 
-const remarkInclude = require("./remark-include");
+const { remarkInclude } = require("./remark-include");
 
 it("processes a file with imports relative to the current directory", async done => {
   const processor = remark().use(remarkInclude);

@@ -1,4 +1,4 @@
-const mdastInclude = require("./mdast-include");
+const { mdastInclude } = require("./mdast-include");
 
 const attacher = (options = {}) => async (tree, file) => {
   const newTree = await mdastInclude(tree, options, {
@@ -7,4 +7,4 @@ const attacher = (options = {}) => async (tree, file) => {
   Object.assign(tree, newTree);
 };
 
-module.exports = attacher;
+module.exports = { remarkInclude: attacher };

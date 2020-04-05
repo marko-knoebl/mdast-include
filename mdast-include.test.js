@@ -1,6 +1,6 @@
 const mdast = require("@karuga/mdast");
 
-const mdastInclude = require("./mdast-include.js");
+const { mdastInclude } = require("./mdast-include.js");
 
 it("leaves mdast tree without @imports unchanged", async () => {
   const inputString = "# heading";

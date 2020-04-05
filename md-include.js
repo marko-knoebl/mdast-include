@@ -3,7 +3,7 @@ const path = require("path");
 
 const mdast = require("@karuga/mdast");
 
-const mdastInclude = require("./mdast-include");
+const { mdastInclude } = require("./mdast-include");
 
 const mdInclude = async (inPath, outPath) => {
   const inTextContent = await fs.promises.readFile(inPath, {
