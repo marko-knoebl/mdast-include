@@ -6,11 +6,13 @@ features:
 
 - recursive includes (include a file which in turn includes another file)
 - include patterns (`@include mydir/*.md` will include all matching files)
+- compatibility with prettier-formatted patterns (`@include mydir/\*.md`)
 
 downsides:
 
 - this operates _after_ parsing is done
 - syntax restrictions (e.g. there must be blank lines before and after a block of imports)
+- cannot match backslash characters in paths
 
 alternatives (remark-based):
 

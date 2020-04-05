@@ -68,5 +68,5 @@ it("imports multiple files via glob patterns", async () => {
     {},
     { directory: "test_assets" }
   );
-  expect(outputTree.children.length).toEqual(7);
+  expect(outputTree.children.length).toEqual(5);
 });

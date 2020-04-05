@@ -14,17 +14,36 @@ const mdastInclude = async (tree, options = {}, context = {}) => {
       includeRegex.test(node.children[0].value)
     ) {
       // this "paragraph" starts with @include
+
+      // there may be multiple consecutive text nodes
+      // e.g. the string "@include \*.md"
+      // will be split into: "@include", "\*", ".md"
+      // gather and concatenate all text nodes:
+      let text = "";
+      for (let child of node.children) {
+        if (child.type !== "text") {
+          throw new Error(
+            `unsupported node type in include: ${child.type}\n` +
+              "only text nodes are supported"
+          );
+        }
+        text += child.value;
+      }
       // split lines
-      const lines = node.children[0].value.split(/\r?\n/);
+      const lines = text.split(/\r?\n/);
       for (let line of lines) {
         const includeMatch = includeRegex.exec(line);
         if (includeMatch === null) {
           throw new Error("non-include expression in include block");
         }
-        const includePattern = `${baseDirectory}/${includeRegex.exec(line)[1]}`;
-        const includePaths = await fastGlob(includePattern);
+
+        const includePattern = `${baseDirectory}/${includeMatch[1]}`;
+        // remove all occurences of "\"
+        // these are sometimes included by the prettier formatter
+        const cleanedPattern = includePattern.replace(/\\/g, "");
+        const includePaths = await fastGlob(cleanedPattern);
         if (includePaths.length === 0) {
-          throw new Error(`no files matched pattern ${includePattern}`);
+          throw new Error(`no files matched pattern ${cleanedPattern}`);
         }
         const contentPromises = includePaths.map(async path => {
           const includeBase = path.slice(0, path.lastIndexOf("/"));
