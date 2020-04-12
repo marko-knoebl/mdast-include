@@ -4,7 +4,7 @@
 
 features:
 
-- recursive includes (include a file which in turn includes another file)
+- compatible with current versions of remark
 - include patterns (`@include mydir/*.md` will include all matching files)
 - compatibility with prettier-formatted patterns (`@include mydir/\*.md`)
 
@@ -14,10 +14,9 @@ downsides:
 - syntax restrictions (e.g. there must be blank lines before and after a block of imports)
 - cannot match backslash characters in paths
 
-alternatives (remark-based):
+alternative:
 
-- https://github.com/wangshijun/remark-include
-- https://github.com/BrekiTomasson/remark-import
+- <https://github.com/Qard/remark-include> - operates during parsing
 
 ## usage
 
@@ -39,8 +38,6 @@ wildcard imports:
 
 <!-- prettier-ignore-end -->
 ```
-
-note: code formatters (like prettier) may have to be disabled (e.g. to prevent replacing `*` with `\*`):
 
 using the remark plugin:
 
